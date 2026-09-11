@@ -1,22 +1,57 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>Smart Interior Design - Philadelphia University</title>
+  <meta charset="UTF-8">
+  <title>موقع الديكور الذكي</title>
+  <style>
+    body { font-family: 'Arial'; text-align: center; padding: 20px; background: #f5f5f5; }
+    h1 { color: #4CAF50; }
+    button { padding: 12px 24px; background: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; margin: 10px; }
+    button:hover { background: #45a049; }
+    input { margin: 10px; }
+  .container { display: flex; gap: 20px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+  .box img { width: 400px; max-width: 90%; height: 300px; object-fit: cover; border: 2px solid #ddd; border-radius: 10px; background: white; }
+  </style>
 </head>
 <body>
-    <h1>نظام ذكي لتصميم الديكور الداخلي</h1>
-    <p>Philadelphia University - Pioneers Academy</p>
-    <div style="text-align:center; margin-top:50px;">
-  <h1>نظام ذكي لتصميم الديكور الداخلي</h1>
-  <p>Philadelphia University - Pioneers Academy</p>
-  <p>ارفعي صورة الغرفة هنا وسيقوم النظام باقتراح الألوان والديكور المناسب</p>
-  
-  <input type="file" accept="image/*" style="margin:20px;">
+
+  <h1>🎨 موقع الديكور الذكي بالـ AI</h1>
+  <p>ارفعي صورة الغرفة الفاضية وشوفي النتيجة بعد 3 ثواني</p>
+
+  <!-- زر رفع الصورة -->
+  <input type="file" id="upload" accept="image/*">
   <br>
-  <button style="padding:10px 20px; background:#4CAF50; color:white; border:none; border-radius:5px;">
-    اقترح علي الديكور
-  </button>
-</div>
+  <!-- زر التطبيق -->
+  <button onclick="applyDesign()">طبق الديكور بالـ AI</button>
+
+  <!-- مكان عرض الصور -->
+  <div class="container">
+    <div class="box">
+      <h3>الصورة قبل</h3>
+      <img id="before" src="">
+    </div>
+    <div class="box">
+      <h3>الصورة بعد</h3>
+      <img id="after" src="" style="display:none;">
+    </div>
+  </div>
+
+<script>
+function applyDesign() {
+  const file = document.getElementById('upload').files[0];
+  if(!file) return alert("⚠️ ارفعي صورة اول");
+
+  // اعرض الصورة الاصلية
+  document.getElementById('before').src = URL.createObjectURL(file);
+
+  // نستنى 3 ثواني ونطلع النتيجة الوهمية
+  setTimeout(() => {
+    document.getElementById('after').src = "images/result-ai.jpg"; // حطي صورتك هون
+    document.getElementById('after').style.display = "block";
+    alert("✅ تم تطبيق الديكور بنجاح!");
+  }, 3000);
+}
+</script>
+
 </body>
 </html>
